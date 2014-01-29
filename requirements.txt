@@ -23,6 +23,10 @@ Accept a username
     - Display total number of comments / posts and est. time to slowly vote on all.
     - Display profile rep before and after
 
+v1.1(?)
+cliargs
+   - Build/import a suite to process cliags
+
 v2
 
 Multi-Account
