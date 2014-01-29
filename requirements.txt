@@ -1,0 +1,35 @@
+###############################
+##  Functional Requirements  ##
+###############################
+
+v1
+
+Authentication
+   - Log in via uname/pwd provided at cli
+   - Log in via uname/pwd stored in file/db?
+
+Accept a username
+   - Validate that the username exists on the site
+   - Spider the user profile for all posts and comments
+
+ Accept an argument to determine up/down vote
+
+ Send believable user-agent and header data.
+
+ Send requests at a believably human rate. No more than 1/sec?
+    - Randomize rate slightly?
+
+ Send up/down vote requests for every comment/post in user profile.
+    - Display total number of comments / posts and est. time to slowly vote on all.
+    - Display profile rep before and after
+
+v2
+
+Multi-Account
+	- Accept multiple usernames/pwds from CLI or file/db
+	- Assign unique user-agent/header profile randomly to each user
+	- Accept an argument for how many users to use
+
+Threading
+	- Multi-thread different usernames simultaneously
+	- Assign different delay/timing to each thread
