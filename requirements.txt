@@ -33,3 +33,7 @@ Multi-Account
 Threading
 	- Multi-thread different usernames simultaneously
 	- Assign different delay/timing to each thread
+
+Stats
+	- Use number of posts/comments to estimate how much rep change per account
+	- Report change/account and allow adjustment of # of accounts
