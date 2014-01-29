@@ -24,7 +24,8 @@ Send up/down vote requests for every comment/post in user profile.
     - Display profile rep before and after
 
 v1.1(?)
-cliargs
+
+Cliargs
     - Build/import a suite to process cliargs
 
 v2.0
