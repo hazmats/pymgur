@@ -1,0 +1,104 @@
+POST /signin?redirect=http://imgur.com/ HTTP/1.1
+Host: imgur.com
+Connection: keep-alive
+Content-Length: 83
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Origin: https://imgur.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+DNT: 1
+Referer: https://imgur.com/include/signin-iframe.html
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Cookie: __cfduid=dcc41d5fe8214401ed509018ef3ca7ebb1381862459620; __qca=P0-135718206-1381862458182; SERVERID=i-5600fe30; IGT=1; m_window=day; m_section=hot; m_sort=viral; UPSERVERID=i-20b21c0e; __gads=ID=242cab0e048e340c:T=1391020318:S=ALNI_MYVzib161Y4ZS4R7Q6Drh1yEd4CAg; __atuvc=7%7C51%2C2%7C2%2C2%7C3%2C0%7C4%2C5%7C5; __utma=1.677214823.1381862458.1391046430.1391109969.158; __utmb=1.28.9.1391110328501; __utmc=1; __utmz=1.1391041365.156.19.utmcsr=purevitriol.imgur.com|utmccn=(referral)|utmcmd=referral|utmcct=/all/
+
+username=&password=&remember=remember&submit_form=Sign+in
+
+
+
+####################
+Successful Response
+####################
+
+HTTP/1.1 302 Found
+Server: nginx
+Date: Thu, 30 Jan 2014 19:32:34 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Set-Cookie: IMGURSESSION=nuiq3m6465kt6mfo94sv0h5a05; path=/; domain=.imgur.com
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Set-Cookie: authautologin=6b4b8dbf9790a62f89fe7ee8b17a46b16abe8229%7ERQDPTM9Yz5bgody7WiKOEWZFfWpqxvkI; expires=Sun, 02-Mar-2014 06:01:38 GMT; path=/; httponly
+Set-Cookie: IMGURSESSION=lh5v7gogg72m3t5sngva57mm04; path=/; domain=.imgur.com
+Set-Cookie: just_logged_in=1; expires=Thu, 30-Jan-2014 20:32:34 GMT; path=/; domain=imgur.com
+Set-Cookie: _nc=1; expires=Sun, 02-Mar-2014 06:01:38 GMT; path=/; domain=.imgur.com; httponly
+Location: http://imgur.com?
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Content-Length: 0
+
+
+####################
+Sent after login
+####################
+
+
+GET / HTTP/1.1
+Host: imgur.com
+Proxy-Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Cookie: __cfduid=dcc41d5fe8214401ed509018ef3ca7ebb1381862459620; __qca=P0-135718206-1381862458182; SERVERID=i-5600fe30; IGT=1; m_window=day; m_section=hot; m_sort=viral; UPSERVERID=i-20b21c0e; __gads=ID=242cab0e048e340c:T=1391020318:S=ALNI_MYVzib161Y4ZS4R7Q6Drh1yEd4CAg; __atuvc=7%7C51%2C2%7C2%2C2%7C3%2C0%7C4%2C5%7C5; __utma=1.677214823.1381862458.1391046430.1391109969.158; __utmb=1.28.9.1391110328501; __utmc=1; __utmz=1.1391041365.156.19.utmcsr=purevitriol.imgur.com|utmccn=(referral)|utmcmd=referral|utmcct=/all/; authautologin=6b4b8dbf9790a62f89fe7ee8b17a46b16abe8229%7ERQDPTM9Yz5bgody7WiKOEWZFfWpqxvkI; IMGURSESSION=lh5v7gogg72m3t5sngva57mm04; just_logged_in=1; _nc=1
+
+
+####################
+Response
+####################
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Set-Cookie: just_logged_in=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=imgur.com
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Content-Length: 71640
+Accept-Ranges: bytes
+Date: Thu, 30 Jan 2014 19:32:37 GMT
+Connection: keep-alive
+X-Imgur-Cached: 0
+Server: cat factory 1.0
+
+### page body ###
+
+
+####################
+Some js and flash stuff is fetched after this. I don't think it's important.
+Then this.. which looks weird
+####################
+
+GET /lp?user=9480e68dfbfc47d083f7f1f090b3798f&page=%2F HTTP/1.1
+X-Sophos-Filter: 516f097ac1d8b9c8a9fce8a12443add30374de0f
+Host: rt.imgur.com
+Proxy-Connection: keep-alive
+Cache-Control: max-age=0
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+Origin: http://imgur.com
+Accept: */*
+DNT: 1
+Referer: http://imgur.com/?
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Connection: keep-alive
+Content-Type: application/json
+Content-Length: 0
+Date: Thu, 30 Jan 2014 19:33:16 GMT

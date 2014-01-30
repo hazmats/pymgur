@@ -1,0 +1,25 @@
+GET /user/Ididntchoosethethuglifemymomchoseitforme/submitted/page/2?scrolling HTTP/1.1
+Host: imgur.com
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+DNT: 1
+Referer: https://imgur.com/user/Ididntchoosethethuglifemymomchoseitforme/submitted
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Cookie: __cfduid=dcc41d5fe8214401ed509018ef3ca7ebb1381862459620; __qca=P0-135718206-1381862458182; SERVERID=i-5600fe30; IGT=1; m_window=day; m_section=hot; m_sort=viral; UPSERVERID=i-20b21c0e; __gads=ID=242cab0e048e340c:T=1391020318:S=ALNI_MYVzib161Y4ZS4R7Q6Drh1yEd4CAg; c_sort=newest; c_window=day; __atuvc=7%7C51%2C2%7C2%2C2%7C3%2C0%7C4%2C7%7C5; IMGURSESSION=4oou86956ilp3r5137ncba4nv0; __utma=1.677214823.1381862458.1391109969.1391111549.159;
+__utmb=1.53.9.1391117339387; __utmc=1; __utmz=1.1391041365.156.19.utmcsr=purevitriol.imgur.com|utmccn=(referral)|utmcmd=referral|utmcct=/all/
+
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 30 Jan 2014 21:29:18 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Cache-Control: max-age=30, s-maxage=30, public, must-revalidate
+Content-Length: 8044
+
+### stuff ###

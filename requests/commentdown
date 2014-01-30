@@ -1,0 +1,30 @@
+POST /gallery/action/vote/170170059 HTTP/1.1
+Host: imgur.com
+Proxy-Connection: keep-alive
+Content-Length: 59
+Accept: */*
+Origin: http://imgur.com
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+DNT: 1
+Referer: http://imgur.com/gallery/LbJfX
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Cookie: __cfduid=dcc41d5fe8214401ed509018ef3ca7ebb1381862459620; __qca=P0-135718206-1381862458182; SERVERID=i-5600fe30; IGT=1; m_window=day; m_section=hot; m_sort=viral; UPSERVERID=i-20b21c0e; __gads=ID=242cab0e048e340c:T=1391020318:S=ALNI_MYVzib161Y4ZS4R7Q6Drh1yEd4CAg; __atuvc=7%7C51%2C2%7C2%2C2%7C3%2C0%7C4%2C5%7C5; authautologin=6b4b8dbf9790a62f89fe7ee8b17a46b16abe8229%7ERQDPTM9Yz5bgody7WiKOEWZFfWpqxvkI;
+IMGURSESSION=lh5v7gogg72m3t5sngva57mm04; _nc=1; __utma=1.677214823.1381862458.1391046430.1391109969.158; __utmb=1.52.9.1391111661673; __utmc=1; __utmz=1.1391041365.156.19.utmcsr=purevitriol.imgur.com|utmccn=(referral)|utmcmd=referral|utmcct=/all/
+
+vote=down&sid=507cd63be30464eb2e6bc224e2da5777&type=caption
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Content-Length: 0
+Accept-Ranges: bytes
+Date: Thu, 30 Jan 2014 19:58:57 GMT
+Connection: keep-alive
+X-Imgur-Cached: 0
+Server: cat factory 1.0
+
