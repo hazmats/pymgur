@@ -9,12 +9,14 @@ import getpass
 imun  = sys.argv[1].strip()
 impwd = getpass.getpass("imgur pwd: ").strip()
 
+# Debugging proxies
+prx = { 'http': 'http://192.168.1.213:8080', 'https': 'http://192.168.1.213:8080' }
+
 # Define some params
 # host so we can switch to localhost for testing
 # pdata is our POST data
 # headers are static for now. Want to cycle through a list randomly in future.
 host = 'imgur.com'
-pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
 headers = {
    'Cache-Control': 'max-age=0',
    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -23,6 +25,21 @@ headers = {
    'Referer': 'https://imgur.com/include/signin-iframe.html'
 }
 
-gh = requests.get('http://imgur.com/', headers=headers)
+def login():
+	pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
+	# Create a session object to snag cookies and authenticate.
+	s = requests.Session()
+	try:
+		login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
+	#login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, proxies=prx, verify=False)
+	except:
+		print 'Some shit be bad.'
+		print login
+	if login.status_code == 302:
+		return dict(s.cookies.get_dict())
+	else:
+		print 'fail omg'
+		print login.status_code
 
-login = requests.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers)
+reqcook = login()
+print reqcook
