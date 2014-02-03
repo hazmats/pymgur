@@ -34,6 +34,11 @@ cmnts = []
 session = requests.Session()
 
 def login():
+	"""
+	Authenticates existing session object with host using provided username and password.
+	Expects no input.
+	Returns None.
+	"""
 	pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
 	# Create a session object to snag cookies and authenticate.
 	try:
@@ -57,8 +62,11 @@ def login():
 #sid = soup.find('input' id='sid')['value']
 
 def get_profile(target):
-	# Hit the profile page of our target and return the soup object.
-	# Also return current reputation score.
+	"""
+	Hit the profile page of our target and return the soup object.
+	Expects the username to be passed in as 'target'
+	Returns a list of the BS profile soup and current reputation.
+	"""
 	prof = session.get('http://'+host+'/user/'+target, headers=headers, proxies=prx)
 	if prof.status_code == 404:
 		print "User %s not found.\nExiting." % target
@@ -68,8 +76,11 @@ def get_profile(target):
 		return soup, soup.find('span', class_='stat').text
 
 def extract_comments(soup):
-	# Append all of the comment IDs to the cmnts list and return how many
-	# were found. This lets us know when we reach the last page.
+	"""
+	Expects a BeautifulSoup object of a comments page.
+	Append all of the comment IDs to the cmnts list and return how many
+	were found. This lets us know when we reach the last page.
+	"""
 	found = 0
 	for x in soup.find_all('div', class_='caption'):
 		cmnts.append(x['data'])
