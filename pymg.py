@@ -59,7 +59,7 @@ def login():
 
 # The 'sid' value is passed on up/down votes. Slurp it out of the soup.
 # Create the list for comment IDs
-#sid = soup.find('input' id='sid')['value']
+sid = soup.find('input' id='sid')['value']
 
 def get_profile(target):
 	"""
@@ -112,5 +112,21 @@ def get_all_comments(target):
 	print "Average Response Times:"
 	print sum(rsptimes) / float(len(rsptimes))
 
+
+def vote(commid, action, itype, reps=len(commid)):
+	"""
+	Accepts list of commentIDs, which type of vote to perform, type of comment.  Uses session to send post data
+	and cycles through list of ID's and up/down votes until end of list.
+	"""
+	pdata = {'sid': sid, 'vote': action, 'type': itype} 
+	maxcmnts = 0
+	#to use later when done testing: while maxcmnts != reps:
+	while testcmnts == True: #while loop to limit # of downvotes to test times
+		for comment in commid:
+			dv = session.post('/gallery/action/vote/'+comment, data=pdata)
+			print dv.elapsed
+			maxcmnts += 1
+			if maxcmnts >= 6: #limiting test to 5 cycles
+				testcmnts = False
 
 get_all_comments(sys.argv[2])
