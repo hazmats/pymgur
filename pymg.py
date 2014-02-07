@@ -2,15 +2,12 @@
 import sys
 import requests
 import getpass
-import time
-import random
 from bs4 import BeautifulSoup
 
 # Pull the name/pwd from CLI args/prompt
 # The getpass lib pulls the library without it going into command history
 # or being displayed on the screen. Strip anything weird.
 imun  = sys.argv[1].strip()
-#impwd = getpass.getpass("imgur pwd: ").strip()
 
 # Debugging proxies
 prx = { 'http': 'http://192.168.1.213:8080', 'https': 'http://192.168.1.213:8080' }
@@ -39,11 +36,12 @@ def login():
 	Expects no input.
 	Returns None.
 	"""
+	impwd = getpass.getpass("imgur pwd: ").strip()
 	pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
 	# Create a session object to snag cookies and authenticate.
 	try:
-		#login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
-		login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, proxies=prx, verify=False, allow_redirects=False)
+		login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
+		#login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, proxies=prx, verify=False, allow_redirects=False)
 	except:
 		print 'Some shit be bad.'
 		print login
@@ -57,9 +55,6 @@ def login():
 	# Remove the Referer header, hoping requests will take care of this
 	del headers['Referer']
 
-# The 'sid' value is passed on up/down votes. Slurp it out of the soup.
-# Create the list for comment IDs
-sid = soup.find('input' id='sid')['value']
 
 def get_profile(target):
 	"""
@@ -103,30 +98,30 @@ def get_all_comments(target):
 			print "Last fetch returned %d comments. Last page reached." % fetched
 			print str(len(cmnts)) + " total comments."
 			break
-		if page % 10 == 0:
-			sleeptime = random.uniform(0.203, 0.522)
-			print "Sleeping for %.3f." % sleeptime
-			time.sleep(sleeptime)
-	print "Response Times"
-	print rsptimes
-	print "Average Response Times:"
-	print sum(rsptimes) / float(len(rsptimes))
+	# The 'sid' value is passed on up/down votes. Slurp it out of the soup.
+	# Create the list for comment IDs
+	global sid 
+	sid = csoup.find('input', id='sid')['value']
 
 
-def vote(commid, action, itype, reps=len(commid)):
+def vote(commid, action, itype, reps=len(cmnts)):
 	"""
 	Accepts list of commentIDs, which type of vote to perform, type of comment.  Uses session to send post data
 	and cycles through list of ID's and up/down votes until end of list.
 	"""
 	pdata = {'sid': sid, 'vote': action, 'type': itype} 
+	testcmnts = True
 	maxcmnts = 0
 	#to use later when done testing: while maxcmnts != reps:
-	while testcmnts == True: #while loop to limit # of downvotes to test times
-		for comment in commid:
-			dv = session.post('/gallery/action/vote/'+comment, data=pdata)
-			print dv.elapsed
-			maxcmnts += 1
-			if maxcmnts >= 6: #limiting test to 5 cycles
-				testcmnts = False
+	for comment in commid[0:5]:
+		dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata)
+		print "Submitted for..."
+		print comment
+		print dv.elapsed
 
+print "Logging in..."
+login()
+print "Logged in..."
 get_all_comments(sys.argv[2])
+print "Comments fetched."
+vote(cmnts, 'up', 'caption')
