@@ -114,6 +114,7 @@ def vote(commid, action, itype, reps=len(cmnts)):
 	maxcmnts = 0
 	#to use later when done testing: while maxcmnts != reps:
 	for comment in commid[0:5]:
+		#dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata, proxies=prx)
 		dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata)
 		print "Submitted for..."
 		print comment
@@ -124,4 +125,4 @@ login()
 print "Logged in..."
 get_all_comments(sys.argv[2])
 print "Comments fetched."
-vote(cmnts, 'up', 'caption')
+vote(cmnts, sys.argv[3], 'caption')
