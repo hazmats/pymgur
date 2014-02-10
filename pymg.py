@@ -23,6 +23,7 @@ prx = { 'http': 'http://192.168.1.213:8080', 'https': 'http://192.168.1.213:8080
 # pdata is our POST data
 host = 'imgur.com'
 cmnts = []
+ctxt = {}
 
 # login will submit the username/password, validate a successful auth response, and return the session object.
 # The session object will maintain cookies/auth status across requests.
@@ -115,6 +116,7 @@ def extract_comments(soup):
 	found = 0
 	for x in soup.find_all('div', class_='caption'):
 		cmnts.append(x['data'])
+		ctxt[x['data'] = x.find_all('div', class_='usertext textbox first1')[0].find_all('span')[2].string.strip()
 		found += 1
 	return found
 
