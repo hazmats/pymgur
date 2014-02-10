@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import requests
+import random
 import getpass
 from bs4 import BeautifulSoup
 
@@ -58,7 +59,7 @@ headers = {
    'Cache-Control': 'max-age=0',
    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
    'Origin': 'https://imgur.com',
-   'User-Agent': random.choice(userAgent) 
+   'User-Agent': random.choice(userAgents),
    'Referer': 'https://imgur.com/include/signin-iframe.html'
 }
 def login():
@@ -71,11 +72,10 @@ def login():
 	pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
 	# Create a session object to snag cookies and authenticate.
 	try:
-		login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
+		login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
 		#login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, proxies=prx, verify=False, allow_redirects=False)
 	except:
 		print 'Some shit be bad.'
-		print login
 	if login.status_code == 302:
 		#return dict(s.cookies.get_dict())
 		return True
@@ -144,7 +144,7 @@ def vote(commid, action, itype, reps=len(cmnts)):
 	testcmnts = True
 	maxcmnts = 0
 	#to use later when done testing: while maxcmnts != reps:
-	for comment in commid[0:5]:
+	for comment in commid:
 		#dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata, proxies=prx)
 		dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata)
 		print "Submitted for..."
