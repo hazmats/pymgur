@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import requests
+import random
 import getpass
 import argparse
 from bs4 import BeautifulSoup
@@ -63,7 +64,7 @@ headers = {
    'Cache-Control': 'max-age=0',
    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
    'Origin': 'https://imgur.com',
-   'User-Agent': random.choice(userAgent) 
+   'User-Agent': random.choice(userAgents),
    'Referer': 'https://imgur.com/include/signin-iframe.html'
 }
 def login(srcuser):
@@ -148,7 +149,7 @@ def vote(commid, action, itype, reps=len(cmnts)):
 	testcmnts = True
 	maxcmnts = 0
 	#to use later when done testing: while maxcmnts != reps:
-	for comment in commid[0:5]:
+	for comment in commid:
 		#dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata, proxies=prx)
 		dv = session.post('http://'+host+'/gallery/action/vote/'+comment, data=pdata)
 		print "Submitted for..."
