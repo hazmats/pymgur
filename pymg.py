@@ -2,12 +2,17 @@
 import sys
 import requests
 import getpass
+import argparse
 from bs4 import BeautifulSoup
 
-# Pull the name/pwd from CLI args/prompt
-# The getpass lib pulls the library without it going into command history
-# or being displayed on the screen. Strip anything weird.
-imun  = sys.argv[1].strip()
+# Begin arg parsing with argparse.
+parser = argparse.ArgumentParser(description='Do some imgr')
+parser.add_argument('source', help='Source username from which to submit votes.', default='qazZAQQ')
+parser.add_argument('target', help='Target username')
+parser.add_argument('action', help='Accepts up, down, or veto.')
+parser.add_argument('type', help='Accepts "image" or "caption"', default="caption")
+args = parser.parse_args()
+
 
 # Debugging proxies
 prx = { 'http': 'http://192.168.1.213:8080', 'https': 'http://192.168.1.213:8080' }
@@ -61,21 +66,20 @@ headers = {
    'User-Agent': random.choice(userAgent) 
    'Referer': 'https://imgur.com/include/signin-iframe.html'
 }
-def login():
+def login(srcuser):
 	"""
 	Authenticates existing session object with host using provided username and password.
 	Expects no input.
 	Returns None.
 	"""
 	impwd = getpass.getpass("imgur pwd: ").strip()
-	pdata = {'username': imun, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
+	pdata = {'username': srcuser, 'password': impwd, 'remember': 'remember', 'submit_form': 'Sign+in' }
 	# Create a session object to snag cookies and authenticate.
 	try:
-		login = s.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
+		login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, allow_redirects=False)
 		#login = session.post('https://'+host+'/signin?redirect=http://imgur.com/', data=pdata, headers=headers, proxies=prx, verify=False, allow_redirects=False)
 	except:
 		print 'Some shit be bad.'
-		print login
 	if login.status_code == 302:
 		#return dict(s.cookies.get_dict())
 		return True
@@ -152,8 +156,8 @@ def vote(commid, action, itype, reps=len(cmnts)):
 		print dv.elapsed
 
 print "Logging in..."
-login()
-print "Logged in..."
-get_all_comments(sys.argv[2])
-print "Comments fetched."
-vote(cmnts, sys.argv[3], 'caption')
+login(args.source)
+print "Logged in."
+get_all_comments(args.target)
+print "Comments fetched. Now %svoting..." % args.action
+vote(cmnts, args.action, 'caption')
