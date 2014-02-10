@@ -3,7 +3,9 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(description='Do some imgr')
-parser.add_argument('source', help='Source username from which to submit votes.')
+megroup = parser.add_mutually_exclusive_group()
+megroup.add_argument('source', help='Source username from which to submit votes.')
+megroup.add_argument('-l', '--logins', help='File containing login credentials for source accounts')
 parser.add_argument('target', help='Target username')
 parser.add_argument('action', help='Accepts up, down, or veto.')
 
