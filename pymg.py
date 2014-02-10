@@ -25,6 +25,7 @@ headers = {
    'Referer': 'https://imgur.com/include/signin-iframe.html'
 }
 cmnts = []
+ctxt = {}
 
 # login will submit the username/password, validate a successful auth response, and return the session object.
 # The session object will maintain cookies/auth status across requests.
@@ -79,6 +80,7 @@ def extract_comments(soup):
 	found = 0
 	for x in soup.find_all('div', class_='caption'):
 		cmnts.append(x['data'])
+		ctxt[x['data'] = x.find_all('div', class_='usertext textbox first1')[0].find_all('span')[2].string.strip()
 		found += 1
 	return found
 
